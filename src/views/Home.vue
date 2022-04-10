@@ -6,11 +6,30 @@
 </template>
 
 <script>
-// @ is an alias to /src
+import gql from "graphql-tag";
 import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
   name: "Home",
+  data() {
+    return {
+      hello: null,
+    };
+  },
+  apollo: {
+    blogs: gql`
+      query {
+        blogs {
+          data {
+            attributes {
+              title
+              body
+            }
+          }
+        }
+      }
+    `,
+  },
   components: {
     HelloWorld,
   },
