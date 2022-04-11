@@ -17,18 +17,24 @@ export default {
     };
   },
   apollo: {
-    blogs: gql`
-      query {
-        blogs {
-          data {
-            attributes {
-              title
-              body
+    blogs: {
+      query: gql`
+        query {
+          blogs {
+            data {
+              attributes {
+                title
+                body
+              }
             }
           }
         }
-      }
-    `,
+      `,
+      watchLoading(isLoading, countModifier) {
+        console.log("isLoading", isLoading);
+        console.log("countModifier", countModifier);
+      },
+    },
   },
   components: {
     HelloWorld,
